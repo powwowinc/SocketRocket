@@ -702,8 +702,11 @@ static __strong NSData *CRLFCRLF;
         } else {
             assert(NO);
         }
+        [self.delegate webSocketDidSendMessage:self];
+       
     });
 }
+
 
 - (void)handlePing:(NSData *)pingData;
 {
@@ -1582,7 +1585,7 @@ static inline dispatch_queue_t log_queue() {
     return queue;
 }
 
-//#define SR_ENABLE_LOG
+//#define SR_ENABLE_LOG 
 
 static inline void SRFastLog(NSString *format, ...)  {
 #ifdef SR_ENABLE_LOG
