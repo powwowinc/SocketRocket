@@ -691,7 +691,8 @@ static __strong NSData *CRLFCRLF;
 {
     NSAssert(self.readyState != SR_CONNECTING, @"Invalid State: Cannot call send: until connection is open");
     // TODO: maybe not copy this for performance
-    data = [data copy];
+    //data = [data copy];
+    [self.delegate webSocketTestTimeMessage:@"Send to......"];
     dispatch_async(_workQueue, ^{
         if ([data isKindOfClass:[NSString class]]) {
             [self _sendFrameWithOpcode:SROpCodeTextFrame data:[(NSString *)data dataUsingEncoding:NSUTF8StringEncoding]];
@@ -702,7 +703,7 @@ static __strong NSData *CRLFCRLF;
         } else {
             assert(NO);
         }
-        [self.delegate webSocketDidSendMessage:self];
+        [self.delegate webSocketTestTimeMessage:@"Start sending"];
        
     });
 }
@@ -726,6 +727,7 @@ static __strong NSData *CRLFCRLF;
 - (void)_handleMessage:(id)message
 {
     SRFastLog(@"Received message");
+    [self.delegate webSocketTestTimeMessage:@"Response from server......."];
     [self _performDelegateBlock:^{
         [self.delegate webSocket:self didReceiveMessage:message];
     }];
@@ -1054,7 +1056,7 @@ static const uint8_t SRPayloadLenMask   = 0x7F;
         
         _outputBufferOffset += bytesWritten;
         
-        if (_outputBufferOffset > 4096 && _outputBufferOffset > (_outputBuffer.length >> 1)) {
+        if (_outputBufferOffset > 2048 && _outputBufferOffset > (_outputBuffer.length >> 1)) {
             _outputBuffer = [[NSMutableData alloc] initWithBytes:(char *)_outputBuffer.bytes + _outputBufferOffset length:_outputBuffer.length - _outputBufferOffset];
             _outputBufferOffset = 0;
         }

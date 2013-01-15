@@ -77,7 +77,7 @@ extern NSString *const SRWebSocketErrorDomain;
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
 
 @optional
-- (void)webSocketDidSendMessage:(SRWebSocket *)webSocket;
+- (void)webSocketTestTimeMessage:(NSString *)webSocket;
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket;
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
