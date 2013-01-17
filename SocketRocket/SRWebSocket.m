@@ -692,6 +692,7 @@ static __strong NSData *CRLFCRLF;
     NSAssert(self.readyState != SR_CONNECTING, @"Invalid State: Cannot call send: until connection is open");
     // TODO: maybe not copy this for performance
     //data = [data copy];
+    [self.delegate webSocketTestTimeMessage:[NSString stringWithFormat:@"Add %@ in queue", data]];
     dispatch_async(_workQueue, ^{
         if ([data isKindOfClass:[NSString class]]) {
             [self _sendFrameWithOpcode:SROpCodeTextFrame data:[(NSString *)data dataUsingEncoding:NSUTF8StringEncoding]];
@@ -703,7 +704,6 @@ static __strong NSData *CRLFCRLF;
             assert(NO);
         }
         [self.delegate webSocketTestTimeMessage:data];
-       
     });
 }
 
