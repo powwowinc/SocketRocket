@@ -1077,7 +1077,7 @@ static const uint8_t SRPayloadLenMask   = 0x7F;
             [self _failWithError:[NSError errorWithDomain:@"org.lolrus.SocketRocket" code:2145 userInfo:[NSDictionary dictionaryWithObject:@"Error writing to stream" forKey:NSLocalizedDescriptionKey]]];
              return;
         }
-        
+        [self.delegate webSocketTestByteSize:bytesWritten recieved:NO];
         _outputBufferOffset += bytesWritten;
         
         if (_outputBufferOffset > 2048 && _outputBufferOffset > (_outputBuffer.length >> 1)) {
@@ -1464,7 +1464,7 @@ static const size_t SRFrameHeaderOverhead = 32;
                 
                 while (_inputStream.hasBytesAvailable) {
                     int bytes_read = [_inputStream read:buffer maxLength:bufferSize];
-                    
+                    [self.delegate webSocketTestByteSize:bytes_read recieved:YES];
                     if (bytes_read > 0) {
                         [_readBuffer appendBytes:buffer length:bytes_read];
                     } else if (bytes_read < 0) {
