@@ -344,7 +344,7 @@ static __strong NSData *CRLFCRLF;
     _consumerStopped = YES;
     _webSocketVersion = 13;
     
-    _workQueue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
+    _workQueue = dispatch_queue_create(dispatch_queue_get_label(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)), DISPATCH_QUEUE_SERIAL);
     
     // Going to set a specific on the queue so we can validate we're on the work queue
     dispatch_queue_set_specific(_workQueue, (__bridge void *)self, maybe_bridge(_workQueue), NULL);
