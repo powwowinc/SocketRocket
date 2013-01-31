@@ -754,6 +754,7 @@ static __strong NSData *CRLFCRLF;
     SRFastLog(@"Received message");
     [self _performDelegateBlock:^{
         [self.delegate webSocket:self didReceiveMessage:message];
+        [self.delegate webSocketTestTimeMessage:@"End handle message"];
     }];
 }
 
@@ -1461,7 +1462,7 @@ static const size_t SRFrameHeaderOverhead = 32;
                 SRFastLog(@"NSStreamEventHasBytesAvailable %@", aStream);
                 const int bufferSize = 2048;
                 uint8_t buffer[bufferSize];
-                
+                [self didPacketReceived:YES];
                 while (_inputStream.hasBytesAvailable) {
                     int bytes_read = [_inputStream read:buffer maxLength:bufferSize];
                     [self.delegate webSocketTestByteSize:bytes_read recieved:YES];
@@ -1481,6 +1482,7 @@ static const size_t SRFrameHeaderOverhead = 32;
                 
             case NSStreamEventHasSpaceAvailable: {
                 SRFastLog(@"NSStreamEventHasSpaceAvailable %@", aStream);
+                [self didPacketReceived:NO];
                 [self _pumpWriting];
                 break;
             }
@@ -1490,6 +1492,13 @@ static const size_t SRFrameHeaderOverhead = 32;
                 break;
         }
     });
+
+}
+- (void)didPacketReceived:(BOOL)isReceived {
+    if ([self.delegate respondsToSelector:@selector(webSocketTestByteSize:recieved:)]) {
+        [self.delegate webSocketTestByteSize:-100 recieved:isReceived];
+    }
+    
 }
 
 @end
