@@ -45,7 +45,6 @@
 		F6BDA806145900D200FE3253 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B208301450F597009315AF /* Foundation.framework */; };
 		F6BDA80C145900D200FE3253 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6BDA80A145900D200FE3253 /* InfoPlist.strings */; };
 		F6BDA8161459016900FE3253 /* SRTAutobahnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BDA8151459016900FE3253 /* SRTAutobahnTests.m */; };
-		F6C41C96145F7C4700641356 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C41C95145F7C4700641356 /* libicucore.dylib */; };
 		F6C41C98145F7C6100641356 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C41C95145F7C4700641356 /* libicucore.dylib */; };
 /* End PBXBuildFile section */
 
@@ -136,7 +135,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6C41C96145F7C4700641356 /* libicucore.dylib in Frameworks */,
 				F6AE4520145906B20022AF3C /* Foundation.framework in Frameworks */,
 				F6016C8914620ECC0037BB3D /* Security.framework in Frameworks */,
 				F6016C8A1462143C0037BB3D /* CFNetwork.framework in Frameworks */,
@@ -392,7 +390,7 @@
 			name = SRWebSocketTests;
 			productName = SRWebSocketTests;
 			productReference = F6BDA802145900D200FE3253 /* SRWebSocketTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -641,7 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
@@ -658,7 +656,7 @@
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 			};
@@ -668,7 +666,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
@@ -684,7 +682,7 @@
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -694,10 +692,7 @@
 		F6B2083B1450F597009315AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/SocketRocket.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -717,10 +712,7 @@
 		F6B2083C1450F597009315AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					"$(ARCHS_STANDARD_32_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/SocketRocket.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
