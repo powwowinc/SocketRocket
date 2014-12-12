@@ -96,14 +96,14 @@ extern NSString *const SRHTTPResponseErrorKey;
 
 // message will either be an NSString if the server is using text
 // or NSData if the server is using binary.
-- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
+- (void)webSocket:(id)webSocket didReceiveMessage:(id)message;
 
 @optional
 
-- (void)webSocketDidOpen:(SRWebSocket *)webSocket;
-- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
-- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
-- (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload;
+- (void)webSocketDidOpen:(id)webSocket;
+- (void)webSocket:(id)webSocket didFailWithError:(NSError *)error;
+- (void)webSocket:(id)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
+- (void)webSocket:(id)webSocket didReceivePong:(NSData *)pongPayload;
 
 @end
 
